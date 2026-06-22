@@ -5,11 +5,38 @@
 
 int main()
 {
-	// Global variables and constants.
-	const int width = 900;
-	const int height = 600;
+	
+	// First we will have to read the header lines of the PPM File.
+	
+	// Create a File Object pointer to read standard Input output from the keyboard.
+	FILE *in = stdin;
 
+	// Create a throw away variable to parse through the header files and then discard the data.
+	char *pthrowaway = calloc(1000,sizeof(char));
 
+	// Read the first Line. (Specifier P3 or P6 can be ignored and thrown away.)
+	fgets(pthrowaway,1000,in);
+
+	// Read the Second Line. (Comment in the file can again be ignored and thrown away.)
+	fgets(pthrowaway,1000,in);
+
+	// Read the Third Line. (Dimensions : width/height.)
+	char *pdimensions = calloc(1000,sizeof(char));		// We are creating a character pointer to store the value of dimensions as string.
+	fgets(pdimensions,1000,in);
+	
+	// Read the Fourth Line. (Max Colour value can be ignored and thrown awar.)
+        fgets(pthrowaway,1000,in);
+
+	free(pthrowaway);  // We free the memory of all the unecessary data like the header part except the dimensions stored in another pointer variable.
+	
+	// Now we convert that into integers using the [sscanf] fucntion.
+	int width = -1;
+	int height = -1;  // Initialising the variables.
+	
+	sscanf(pdimensions,"%d %d\n",&width,&height);  // So sscanf() parses through the pdimensions and takes the values and stores it in the address of width and height variables.
+	free(pdimensions);     // Now we can free this memory space as well.	
+	
+	printf("Width=%d,Height=%d\n",width,height);
 	printf("Hello World!\n");
 
 	// CreateWindow creates as object(The window) and stores in memory. 
