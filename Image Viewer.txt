@@ -1,0 +1,22 @@
+Image Viewer
+
+vim iv.c   --- Created a file in vim editor called iv.c
+
+for Compilation:
+	1. gcc -Wall -Wextra -g -o iv iv.c   -- Initially.
+	2. gcc -Wall -Wextra -g -o iv iv.c `sdl2-config --cflags --libs`
+
+for Output 
+	./iv   instead of ./a.out as we name -o iv
+
+
+Dependencies:
+	1. sudo apt install libsdl2-dev libsdl2-2.0-0 -y; [For SDL2/SDL2 Library for the graphics.]
+
+
+
+
+Flow :
+
+Now when we start using the SDL Library out compilation changes to 
+	gcc -Wall -Wextra -g -o iv iv.c `sdl2-config --cflags --libs`
